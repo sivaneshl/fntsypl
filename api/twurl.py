@@ -1,11 +1,11 @@
 #twurl
 
 import urllib.request, urllib.parse, urllib.error
-import hidden
+import twkeys
 import oauth2 as oauth
 
 def augment(url, parameters):
-    secrets = hidden.oauth()
+    secrets = twkeys.oauth()
     consumer = oauth.Consumer(secrets['consumer_key'],secrets['consumer_secret'])
     token = oauth.Token(secrets['token_key'],secrets['token_secret'])
     oauth_request = oauth.Request.from_consumer_and_token(consumer,
