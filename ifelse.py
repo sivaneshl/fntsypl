@@ -1,14 +1,24 @@
-# if statements
-
-x = int(raw_input())
-if x < 0:
-	print "Negative"
-elif x ==0:
-	print "zero"	
-elif x % 2 == 0:
-	print "positive even"
-elif x % 2 != 0:
-	print "positive odd"
+x = 4
+if x > 2:
+    print('big')
 else:
-	print "!@#$" 
+    print('small')
+    
+x = 0    
+if x < 2:
+    print('small')
+elif x < 10:
+    print('medium')
+else:
+    print('big')
+print('done')
 
+x = 20
+if x < 2:
+    print('below 2')
+elif x < 20:
+    print('below 20')
+elif x < 10:
+    print('below 10')
+else:
+    print('else')
