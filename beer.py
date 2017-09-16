@@ -1,6 +1,5 @@
 import sys
 
-
 n = 100
 if sys.argv[1:]:
     n = int(sys.argv[1])
@@ -15,4 +14,3 @@ for i in range(n, 0, -1):
     print(bottle(i) + ".")
     print("Take one down, pass it around,")
     print(bottle(i - 1), "on the wall.")
- 
