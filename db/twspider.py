@@ -24,6 +24,8 @@ while True:
             print('No unretrieved Twitter accounts found')
             continue
 
+    cur.execute('INSERT INTO twfriends (name, retrieved, friends) VALUES (?, ?, ?)', (account_name, 1, 0))
+
     url = twurl.augment('https://api.twitter.com/1.1/friends/list.json',
         {'screen_name':account_name,'count':'5'})
 
@@ -34,16 +36,17 @@ while True:
     headers = dict(connection_to_twitter.getheaders())
     print('Attempts Remaining', headers['x-rate-limit-remaining'])
 
-    cur.execute('UPDATE twfriends SET retrieved = 1 WHERE name = ?', (account_name,))
+    cur.execute('UPDATE twfriends SET retrieved = 1 WHERE name = "' + account_name + '"')
 
     for user in js['users']:
         friend = user['screen_name']
-        cur.execute('SELECT friends FROM twfriends WHERE name = ?', friend)
+        print(friend)
+        cur.execute('SELECT friends FROM twfriends WHERE name = ? LIMIT 1', (friend,))
         try:
             count = cur.fetchone()[0]
             cur.execute('UPDATE twfriends SET count = ? WHERE name = ?', (count + 1, friend))
         except:
-            cur.execute('INSERT INTO twfrieds (name, retrieved, friends) VALUES (?, ?, ?)', (friend, 0, 1))
+            cur.execute('INSERT INTO twfriends (name, retrieved, friends) VALUES (?, ?, ?)', (friend, 0, 1))
 
     conn.commit()
 
