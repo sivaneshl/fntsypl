@@ -2,7 +2,8 @@ import urllib
 import json
 import sqlite3
 import sys
-sys.path.insert(0,'/home/sivaneshl/python/py3/pyhton-tutorials/api')
+# sys.path.insert(0,'C:/python_learning/api')
+sys.path.append("../api")
 import twurl # relative path of twurl.py added to sys.path & __init__.py added to that folder
 
 conn = sqlite3.connect('music.sqlite3')
