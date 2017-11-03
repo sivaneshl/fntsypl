@@ -64,7 +64,7 @@ print(webs)
 #         continue
 # # print(num_pages)
 
-while True:
+for i in range(10):
     # get an unretrieved page from pages
     cur.execute('SELECT id,url FROM pages WHERE html IS NULL AND error IS NULL ORDER BY RANDOM() LIMIT 1')
     try:
@@ -167,7 +167,7 @@ while True:
         conn.commit()
 
     # stop after retrieving 1 url
-    break
+    # break
 
 print(newpages)
 # print(html)
