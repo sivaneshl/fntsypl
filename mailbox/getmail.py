@@ -10,7 +10,7 @@ ctx.check_hostname = False
 ctx.verify_mode = ssl.CERT_NONE
 
 # create/connect the database
-conn = sqlite3.connect('mailbox/mailbox.sqlite3')
+conn = sqlite3.connect('mailbox.sqlite3')
 cur = conn.cursor()
 
 # create table messages
